@@ -1,6 +1,6 @@
 # ewallet-few
 
-> Model-Driven Software Development reference implementation2019-I
+> E-Wallet backend for Model-Driven Software Development reference implementation.
 
 ## Build Setup
 
