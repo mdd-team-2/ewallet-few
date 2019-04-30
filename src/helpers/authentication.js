@@ -1,13 +1,10 @@
 export default {
-  authHeaders( ) {
-    let storedToken = JSON.parse( localStorage.getItem( 'user' ) );
-    if( storedToken && storedToken.token ) {
-      return {
-        'Authorization': 'Bearer ' + storedToken.token
-      };
-    }
-    else {
-      return { };
+  getAuthHeader: () => {
+    let storedToken = JSON.parse(localStorage.getItem('user'))
+    if (storedToken && storedToken.token) {
+      return 'Bearer ' + storedToken.token
+    } else {
+      return undefined
     }
   }
 }
