@@ -1,4 +1,4 @@
-import { API_URI, HTTP_METHODS } from '../../../constants'
+import { API_URI, AUTH_HEADER_PREFIX, HTTP_METHODS } from '../../../constants'
 import axios from 'axios'
 
 export const actions = {
@@ -15,7 +15,7 @@ export const actions = {
           const token = response.data.token
           const user = response.data.user
           localStorage.setItem('user', token)
-          axios.defaults.headers.common['Authorization'] = 'Bearer ' + token
+          axios.defaults.headers.common['Authorization'] = AUTH_HEADER_PREFIX + token
           commit('auth_success', token, user)
           resolve(response)
         })
@@ -39,7 +39,7 @@ export const actions = {
           const token = response.data.token
           const user = response.data.user
           localStorage.setItem('user', token)
-          axios.defaults.headers.common['Authorization'] = 'Bearer ' + token
+          axios.defaults.headers.common['Authorization'] = AUTH_HEADER_PREFIX + token
           commit('auth_success', token, user)
           resolve(response)
         })

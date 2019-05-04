@@ -14,7 +14,7 @@
             <div class="row">
                 <div class="col-6 collapse-brand">
                     <router-link to="/">
-                        <img src="@/assets/img/brand/green.png">
+                        <img src="@/assets/img/brand/orange.png">
                     </router-link>
                 </div>
                 <div class="col-6 collapse-close">
@@ -39,19 +39,19 @@
             <li class="nav-item">
                 <router-link class="nav-link nav-link-icon" to="/register">
                     <i class="ni ni-circle-08"></i>
-                    <span class="nav-link-inner--text">Register</span>
+                    <span class="nav-link-inner--text">Regístrese</span>
                 </router-link>
             </li>
             <li class="nav-item">
                 <router-link class="nav-link nav-link-icon" to="/login">
                     <i class="ni ni-key-25"></i>
-                    <span class="nav-link-inner--text">Login</span>
+                    <span class="nav-link-inner--text">Inicio de sesión</span>
                 </router-link>
             </li>
             <li class="nav-item">
                 <router-link class="nav-link nav-link-icon" to="/profile">
                     <i class="ni ni-single-02"></i>
-                    <span class="nav-link-inner--text">Profile</span>
+                    <span class="nav-link-inner--text">Perfil</span>
                 </router-link>
             </li>
         </ul>
@@ -60,14 +60,14 @@
     <!-- Header -->
     <div class="header bg-gradient-success py-7 py-lg-8">
         <div class="container">
-            <div class="header-body text-center mb-7">
-                <div class="row justify-content-center">
+            <div class="header-body text-center mb-5">
+                <!-- <div class="row justify-content-center">
                     <div class="col-lg-5 col-md-6">
-                        <h1 class="text-white">Welcome!</h1>
-                        <p class="text-lead text-white">Use these awesome forms to login or create new account in
-                            your project for free.</p>
+                        <h1 class="text-white">Bienvenido!</h1>
+                        <img src="@/assets/img/brand/logo.png">
+                        <p class="text-lead text-white"><strong>Billeterapp</strong> es la solución más fácil para tranferir su dinero a sus amigos y pagar servicios.</p>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
         <div class="separator separator-bottom separator-skew zindex-100">
@@ -132,4 +132,13 @@ export default {
 }
 </script>
 <style>
+.bg-gradient-success {
+  background: linear-gradient(87deg, #75B7D6 0, #AAD2F2 100%) !important;
+}
+.fill-default {
+  fill: #00132B;
+}
+.navbar-horizontal .navbar-brand img {
+  height: 140px;
+}
 </style>
