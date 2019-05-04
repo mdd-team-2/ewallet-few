@@ -6,8 +6,15 @@ import router from './router'
 import store from './store'
 import axios from 'axios'
 import authUtils from './helpers/authentication'
+import MainPlugin from './plugins/index'
+import BootstrapVue from 'bootstrap-vue'
+// import 'bootstrap/dist/css/bootstrap.css'
+// import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 Vue.config.productionTip = false
+
+Vue.use(BootstrapVue)
+Vue.use(MainPlugin)
 
 Vue.prototype.$http = axios
 const token = authUtils.getAuthHeader()

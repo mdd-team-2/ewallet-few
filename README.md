@@ -7,6 +7,8 @@
 ``` bash
 # install dependencies
 npm install
+npm install --save bootstrap-vue bootstrap nouislider vue2-transitions chart.js vue-chartjs
+npm install --save-dev node-sass sass-loader
 
 # serve with hot reload at localhost:8080
 npm run dev
