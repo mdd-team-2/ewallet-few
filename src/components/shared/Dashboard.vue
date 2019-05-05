@@ -18,47 +18,18 @@
                     </stats-card>
                 </div>
                 <div class="col-xl-3 col-lg-6">
-                    <stats-card title="Total traffic"
-                                type="gradient-orange"
-                                sub-title="2,356"
-                                icon="ni ni-chart-pie-35"
-                                class="mb-4 mb-xl-0"
-                    >
-
-                        <template slot="footer">
-                            <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 12.18%</span>
-                            <span class="text-nowrap">Since last month</span>
-                        </template>
-                    </stats-card>
-                </div>
-                <div class="col-xl-3 col-lg-6">
-                    <stats-card title="Sales"
+                    <stats-card title="Balance"
                                 type="gradient-green"
-                                sub-title="924"
+                                sub-title="10000"
                                 icon="ni ni-money-coins"
                                 class="mb-4 mb-xl-0"
                     >
 
                         <template slot="footer">
-                            <span class="text-danger mr-2"><i class="fa fa-arrow-down"></i> 5.72%</span>
-                            <span class="text-nowrap">Since last month</span>
+                            <span class="text-nowrap">Este es tu dinero en la billetera</span>
                         </template>
                     </stats-card>
 
-                </div>
-                <div class="col-xl-3 col-lg-6">
-                    <stats-card title="Performance"
-                                type="gradient-info"
-                                sub-title="49,65%"
-                                icon="ni ni-chart-bar-32"
-                                class="mb-4 mb-xl-0"
-                    >
-
-                        <template slot="footer">
-                            <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 54.8%</span>
-                            <span class="text-nowrap">Since last month</span>
-                        </template>
-                    </stats-card>
                 </div>
             </div>
         </base-header>
@@ -126,17 +97,6 @@
                 </div>
             </div>
             <!-- End charts-->
-
-            <!--Tables-->
-            <div class="row mt-5">
-                <div class="col-xl-8 mb-5 mb-xl-0">
-                    <page-visits-table></page-visits-table>
-                </div>
-                <div class="col-xl-4">
-                    <social-traffic-table></social-traffic-table>
-                </div>
-            </div>
-            <!--End tables-->
         </div>
 
     </div>
@@ -147,16 +107,10 @@ import * as chartConfigs from '@/components/shared/Charts/config'
 import LineChart from '@/components/shared/Charts/LineChart'
 import BarChart from '@/components/shared/Charts/BarChart'
 
-// Tables
-// import SocialTrafficTable from './Dashboard/SocialTrafficTable'
-// import PageVisitsTable from './Dashboard/PageVisitsTable'
-
 export default {
   components: {
     LineChart,
     BarChart
-    // PageVisitsTable,
-    // SocialTrafficTable
   },
   data () {
     return {
@@ -203,4 +157,8 @@ export default {
   }
 }
 </script>
-<style></style>
+<style>
+.bg-gradient-success {
+  background: linear-gradient(87deg, #75B7D6, #AAD2F2 100%) !important;
+}
+</style>

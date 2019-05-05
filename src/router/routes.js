@@ -14,7 +14,10 @@ const routes = [
       {
         path: 'login',
         name: 'Login',
-        component: Login
+        component: Login,
+        meta: {
+          requiresAuth: false
+        }
       },
       {
         path: 'register',
@@ -33,7 +36,10 @@ const routes = [
       {
         path: '',
         name: 'Dashboard',
-        component: Dashboard
+        component: Dashboard,
+        meta: {
+          requiresAuth: true
+        }
       }
     ]
   }

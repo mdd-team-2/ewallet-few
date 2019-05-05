@@ -4,23 +4,18 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from './store'
-import axios from 'axios'
-import authUtils from './helpers/authentication'
 import MainPlugin from './plugins/index'
 import BootstrapVue from 'bootstrap-vue'
-// import 'bootstrap/dist/css/bootstrap.css'
-// import 'bootstrap-vue/dist/bootstrap-vue.css'
+import es from 'vee-validate/dist/locale/es'
+import VeeValidate, { Validator } from 'vee-validate'
 
 Vue.config.productionTip = false
 
 Vue.use(BootstrapVue)
 Vue.use(MainPlugin)
+Vue.use(VeeValidate)
 
-Vue.prototype.$http = axios
-const token = authUtils.getAuthHeader()
-if (token) {
-  Vue.prototype.$http.defaults.headers.common['Authorization'] = token
-}
+Validator.localize('es', es)
 
 /* eslint-disable no-new */
 new Vue({

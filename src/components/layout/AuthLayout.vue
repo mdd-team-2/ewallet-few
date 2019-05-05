@@ -31,12 +31,6 @@
         <!-- Navbar items -->
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <router-link class="nav-link nav-link-icon" to="/">
-                    <i class="ni ni-planet"></i>
-                    <span class="nav-link-inner--text">Dashboard</span>
-                </router-link>
-            </li>
-            <li class="nav-item">
                 <router-link class="nav-link nav-link-icon" to="/register">
                     <i class="ni ni-circle-08"></i>
                     <span class="nav-link-inner--text">Regístrese</span>
@@ -48,12 +42,6 @@
                     <span class="nav-link-inner--text">Inicio de sesión</span>
                 </router-link>
             </li>
-            <li class="nav-item">
-                <router-link class="nav-link nav-link-icon" to="/profile">
-                    <i class="ni ni-single-02"></i>
-                    <span class="nav-link-inner--text">Perfil</span>
-                </router-link>
-            </li>
         </ul>
       </template>
     </base-nav>
@@ -61,13 +49,6 @@
     <div class="header bg-gradient-success py-7 py-lg-8">
         <div class="container">
             <div class="header-body text-center mb-5">
-                <!-- <div class="row justify-content-center">
-                    <div class="col-lg-5 col-md-6">
-                        <h1 class="text-white">Bienvenido!</h1>
-                        <img src="@/assets/img/brand/logo.png">
-                        <p class="text-lead text-white"><strong>Billeterapp</strong> es la solución más fácil para tranferir su dinero a sus amigos y pagar servicios.</p>
-                    </div>
-                </div> -->
             </div>
         </div>
         <div class="separator separator-bottom separator-skew zindex-100">
@@ -78,7 +59,7 @@
         </div>
     </div>
     <!-- Page content -->
-    <div class="container mt--8 pb-5">
+    <div class="container mt--8 py-5">
         <slide-y-up-transition mode="out-in" origin="center top">
             <router-view></router-view>
         </slide-y-up-transition>
@@ -88,21 +69,15 @@
             <div class="row align-items-center justify-content-xl-between">
                 <div class="col-xl-6">
                     <div class="copyright text-center text-xl-left text-muted">
-                        &copy; {{year}} <a href="https://www.creative-tim.com" class="font-weight-bold ml-1"
-                                            target="_blank">Creative Tim</a>
+                      <router-link class="nav-link font-weight-bold ml-1" to="/">
+                        Model-Driven Software Development- Team 2: Reference Implementation
+                      </router-link>
                     </div>
                 </div>
                 <div class="col-xl-6">
                     <ul class="nav nav-footer justify-content-center justify-content-xl-end">
                         <li class="nav-item">
-                            <a href="https://www.creative-tim.com" class="nav-link" target="_blank">Creative Tim</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="https://www.creative-tim.com/presentation" class="nav-link" target="_blank">About
-                                Us</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="http://blog.creative-tim.com" class="nav-link" target="_blank">Blog</a>
+                            <a href="https://www.creative-tim.com" class="nav-link" target="_blank">Powered by: &copy; Creative Tim {{year}}</a>
                         </li>
                         <li class="nav-item">
                             <a href="https://github.com/creativetimofficial/argon-dashboard/blob/master/LICENSE.md"
@@ -139,6 +114,6 @@ export default {
   fill: #00132B;
 }
 .navbar-horizontal .navbar-brand img {
-  height: 140px;
+  height: 150px;
 }
 </style>
