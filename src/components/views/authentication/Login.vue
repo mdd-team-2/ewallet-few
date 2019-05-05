@@ -79,13 +79,15 @@
       </div>
       <div class="row mt-3">
         <div class="col-12 text-right">
-          <router-link to="/register" class="text-light"><small>¿No tiene una cuenta? Regístrese</small></router-link>
+          <router-link to="/auth/register" class="text-light"><small>¿No tiene una cuenta? Regístrese</small></router-link>
         </div>
       </div>
     </div>
   </div>
 </template>
 <script>
+import { AUTH_HEADER_PREFIX } from '@/constants'
+import autil from '@/helpers/authentication'
 export default {
   name: 'login',
   data () {
@@ -105,6 +107,7 @@ export default {
       this.$validator.validateAll().then((result) => {
         if (result) {
           this.$store.dispatch('login', this.model).then(success => {
+            this.$api.defaults.headers.common['Authorization'] = AUTH_HEADER_PREFIX + autil.getCurrentToken()
             this.$router.push({name: 'Dashboard'})
           }).catch(error => {
             console.log(error)

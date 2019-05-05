@@ -137,7 +137,7 @@
             </div>
             <div class="row mt-3">
                 <div class="col-12 text-right">
-                    <router-link to="/login" class="text-light">
+                    <router-link to="/auth/login" class="text-light">
                         <small>Inicie sesión</small>
                     </router-link>
                 </div>

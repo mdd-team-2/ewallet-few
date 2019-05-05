@@ -1,4 +1,4 @@
-import { ROOT_API_URL, AUTH_HEADER_PREFIX } from '../../../constants'
+import { ROOT_API_URL } from '../../../constants'
 import axios from 'axios'
 
 export const actions = {
@@ -7,7 +7,6 @@ export const actions = {
       commit('auth_request')
       axios.post(ROOT_API_URL + '/login', {user: user})
         .then(response => {
-          console.log(response.data)
           let token = response.data.data.token
           let user = {
             name: response.data.data.name,
@@ -15,7 +14,6 @@ export const actions = {
           }
           localStorage.setItem('token', token)
           localStorage.setItem('user', JSON.stringify(user))
-          axios.defaults.headers.common['Authorization'] = AUTH_HEADER_PREFIX + token
           commit('auth_success', {token, user})
           resolve(response)
         })
@@ -46,7 +44,6 @@ export const actions = {
       commit('logout')
       localStorage.removeItem('token')
       localStorage.removeItem('user')
-      delete axios.defaults.headers.common['Authorization']
       resolve()
     })
   }

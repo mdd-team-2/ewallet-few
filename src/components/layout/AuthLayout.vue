@@ -4,7 +4,7 @@
     <base-nav class="navbar-top navbar-horizontal navbar-dark"
               containerClasses="px-4 container"
               expand>
-      <router-link slot="brand" class="navbar-brand" to="/">
+      <router-link slot="brand" class="navbar-brand" to="/auth/login">
           <img src="@/assets/img/brand/white.png"/>
       </router-link>
 
@@ -31,13 +31,13 @@
         <!-- Navbar items -->
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <router-link class="nav-link nav-link-icon" to="/register">
+                <router-link class="nav-link nav-link-icon" to="/auth/register">
                     <i class="ni ni-circle-08"></i>
                     <span class="nav-link-inner--text">Regístrese</span>
                 </router-link>
             </li>
             <li class="nav-item">
-                <router-link class="nav-link nav-link-icon" to="/login">
+                <router-link class="nav-link nav-link-icon" to="/auth/login">
                     <i class="ni ni-key-25"></i>
                     <span class="nav-link-inner--text">Inicio de sesión</span>
                 </router-link>

@@ -8,9 +8,10 @@
       <template slot="links">
         <sidebar-item :link="{name: 'Inicio', icon: 'ni ni-tv-2 text-orange', path: '/home'}"/>
         <sidebar-item :link="{name: 'Mi perfil', icon: 'ni ni-single-02 text-orange', path: '/profile'}"/>
-        <sidebar-item :link="{name: 'Reportes', icon: 'ni ni-bullet-list-67 text-orange', path: '/tables'}"/>
-        <sidebar-item :link="{name: 'Transferencias', icon: 'ni ni-send text-orange', path: '/login'}"/>
-        <sidebar-item :link="{name: 'Pagos', icon: 'ni ni ni-credit-card text-orange', path: '/register'}"/>
+        <sidebar-item :link="{name: 'Transferencias', icon: 'ni ni-send text-orange', path: '/transference'}"/>
+        <sidebar-item :link="{name: 'Pagos', icon: 'ni ni-credit-card text-orange', path: '/payment'}"/>
+        <sidebar-item :link="{name: 'Reportes', icon: 'ni ni-bullet-list-67 text-orange', path: '/report'}"/>
+        <sidebar-item :link="{name: 'Recargas', icon: 'ni ni-money-coins text-orange', path: '/charge'}"/>
 
       </template>
     </side-bar>

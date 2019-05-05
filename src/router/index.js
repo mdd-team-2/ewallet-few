@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import store from '../store'
 import routes from './routes'
-import authUtils from '@/helpers/authentication'
+import autil from '@/helpers/authentication'
 
 Vue.use(Router)
 
@@ -12,13 +12,12 @@ let router = new Router({
 })
 
 router.beforeEach((to, from, next) => {
-  if (authUtils.getCurrentToken() && authUtils.getCurrentUser()) {
-    let token = authUtils.getCurrentToken()
-    let user = JSON.parse(authUtils.getCurrentUser())
-    store.commit('auth_success', {token, user})
+  if (autil.getCurrentToken() && autil.getCurrentUser()) {
+    store.commit('auth_success', {token: autil.getCurrentToken(), user: JSON.parse(autil.getCurrentUser())})
   } else {
     store.commit('logout')
   }
+
   if (to.matched.some(record => record.meta.requiresAuth)) {
     if (store.getters.isLoggedIn) {
       next()

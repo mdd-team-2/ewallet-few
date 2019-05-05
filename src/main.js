@@ -4,16 +4,27 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from './store'
-import MainPlugin from './plugins/index'
+import ComponentPlugin from './plugins/argon'
 import BootstrapVue from 'bootstrap-vue'
 import es from 'vee-validate/dist/locale/es'
 import VeeValidate, { Validator } from 'vee-validate'
+import Vue2Filters from 'vue2-filters'
+import { ROOT_API_URL } from '@/constants'
+import axios from 'axios'
 
 Vue.config.productionTip = false
 
 Vue.use(BootstrapVue)
-Vue.use(MainPlugin)
+Vue.use(ComponentPlugin)
 Vue.use(VeeValidate)
+Vue.use(Vue2Filters)
+Vue.use({
+  install (Vue) {
+    Vue.prototype.$api = axios.create({
+      baseURL: ROOT_API_URL
+    })
+  }
+})
 
 Validator.localize('es', es)
 
