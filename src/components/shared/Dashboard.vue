@@ -19,7 +19,7 @@
         <div class="col-xl-4 col-lg-6">
           <stats-card title="Balance"
               type="gradient-green"
-              :sub-title="10000000 | currency('$', 2, { spaceBetweenAmountAndSymbol: true, decimalSeparator: ',' })"
+              :sub-title="balance | currency('$', 2, { spaceBetweenAmountAndSymbol: true, decimalSeparator: ',' })"
               icon="ni ni-money-coins"
               class="mb-4 mb-xl-0">
 
@@ -49,12 +49,23 @@
 </template>
 <script>
 export default {
+  beforeMount () {
+    this.getBalance()
+  },
   data () {
     return {
-      last: new Date()
+      balance: 0
     }
   },
   methods: {
+    getBalance () {
+      this.$api.get('user/current-money').then((success) => {
+        this.balance = success.data.data.current
+      }).catch((error) => {
+        console.error('Error at Dashboard@getBalance', error)
+        this.balance = 0
+      })
+    }
   },
   mounted () {
   },

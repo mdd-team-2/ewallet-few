@@ -70,6 +70,7 @@ export default {
     transfer () {
       this.$api.post('/user/transfer', {transfer: this.model}).then((success) => {
         console.log(success.data)
+        alert('Exito :D')
       }).catch((error) => {
         console.error('Error in Transference@transfer: ', error)
       })
