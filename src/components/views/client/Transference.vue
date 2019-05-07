@@ -50,7 +50,7 @@
                             <div class="mb-1">
                               ¿Cuánto dinero quieres transferir?
                             </div>
-                            <base-input v-model="model.value"
+                            <base-input v-model.number="model.value"
                                 placeholder="¿Cuánto transferiremos?"
                                 addon-left-icon="ni ni-money-coins"
                                 v-validate="{required: true, numeric: true, min: 0}"
@@ -136,8 +136,7 @@ export default {
     },
     transfer () {
       this.$api.post('/user/transfer', {transfer: this.model}).then((success) => {
-        console.log(success.data)
-        alert('Exito :D')
+        this.modals.success = true
       }).catch((error) => {
         this.errorMsg = 'No se puede completar la transacción'
         this.modals.errorModal = true

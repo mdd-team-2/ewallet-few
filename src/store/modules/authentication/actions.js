@@ -28,7 +28,7 @@ export const actions = {
   register: ({commit}, user) => {
     return new Promise((resolve, reject) => {
       commit('auth_request')
-      axios.post(ROOT_API_URL + '/register', {user: user})
+      axios.post(ROOT_API_URL + '/signup', {user: user})
         .then(response => {
           commit('logout')
           resolve(response)

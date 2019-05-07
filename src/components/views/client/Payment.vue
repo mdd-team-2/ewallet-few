@@ -44,7 +44,7 @@
                               <div class="mb-1">
                                 ¿Cuánto dinero quieres pagar?
                               </div>
-                              <base-input v-model="model.value"
+                              <base-input v-model.number="model.value"
                                   placeholder="¿Cuánto transferiremos?"
                                   addon-left-icon="ni ni-money-coins"
                                   v-validate="{required: true, numeric: true, min: 0}"
@@ -71,6 +71,33 @@
         </div>
       </div>
     </div>
+    <modal :show.sync="modals.errorModal"
+        gradient="danger"
+        modal-classes="modal-danger modal-dialog-centered">
+      <h6 slot="header" class="modal-title" id="modal-title-notification">Alerta del sistema</h6>
+
+      <div class="py-3 text-center">
+        <i class="ni ni-bell-55 ni-3x"></i>
+        <p class="mt-4">{{errorMsg}}</p>
+      </div>
+      <template slot="footer">
+        <base-button type="white" @click="modals.errorModal = false">Aceptar</base-button>
+      </template>
+    </modal>
+
+    <modal :show.sync="modals.success"
+        gradient="success"
+        modal-classes="modal-success modal-dialog-centered">
+      <h6 slot="header" class="modal-title" id="modal-title-notification">Alerta del sistema</h6>
+
+      <div class="py-3 text-center">
+        <i class="ni ni-satisfied ni-3x"></i>
+        <p class="mt-4">El pago se realizó exitosamente</p>
+      </div>
+      <template slot="footer">
+        <base-button type="white" @click="close()">Aceptar</base-button>
+      </template>
+    </modal>
   </div>
 </template>
 <script>
@@ -81,6 +108,11 @@ export default {
   data: () => ({
     services: [],
     selectedService: null,
+    modals: {
+      errorModal: false,
+      success: false
+    },
+    errorMsg: null,
     model: {
       value: 0,
       service: null
@@ -96,6 +128,8 @@ export default {
           })
         })
       }).catch((error) => {
+        this.errorMsg = 'No hay servicios disponibles para pagar'
+        this.modals.errorModal = true
         console.error('Error at Payment@fetchServices', error)
       })
     },
@@ -103,8 +137,14 @@ export default {
       this.$api.post('/user/payment', {payment: this.model}).then((success) => {
         this.modals.success = true
       }).catch((error) => {
+        this.errorMsg = 'No se pudo completar el pago'
+        this.modals.errorModal = true
         console.error('Error in Transference@transfer: ', error)
       })
+    },
+    close () {
+      this.modals.success = false
+      this.$router.push({name: 'Dashboard'})
     }
   },
   watch: {

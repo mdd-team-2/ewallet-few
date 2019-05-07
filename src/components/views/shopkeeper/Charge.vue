@@ -50,7 +50,7 @@
                             <div class="mb-1">
                               Ingrese el monto
                             </div>
-                            <base-input v-model="model.value"
+                            <base-input v-model.number="model.value"
                                 placeholder="¿Cuánto se recargará?"
                                 addon-left-icon="ni ni-money-coins"
                                 v-validate="{required: true, numeric: true, min: 0}"
@@ -125,7 +125,7 @@ export default {
   methods: {
     queryWallet () {
       let payload = {wallet: {email: this.queriedWallet}}
-      this.$api.post('/consult-wallet', payload).then((success) => {
+      this.$api.post('/admin/consult-wallet', payload).then((success) => {
         this.model.wallet = success.data.data.wallet
         this.targetUser = success.data.data.user
       }).catch((error) => {
