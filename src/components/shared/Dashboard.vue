@@ -2,21 +2,21 @@
   <div>
     <base-header type="gradient-success" class="pb-6 pb-8 pt-5 pt-md-8">
       <div class="row">
-        <div class="col-xl-4 col-lg-6">
-          <stats-card title="Última actividad"
+        <div class="col-xl-5 col-lg-12">
+          <stats-card title="Hora del sistema"
                       type="gradient-red"
-                      :sub-title="'21/03/2019'"
+                      :sub-title="now | moment('DD/MM/YYYY hh:mm:ss a')"
                       icon="ni ni-active-40"
                       class="mb-4 mb-xl-0">
 
             <template slot="footer">
               <span class="text-success mr-2"><i class="fa fa-arrow-up"></i></span>
-              <span class="text-nowrap">Fecha de tu última actividad</span>
+              <span class="text-nowrap">Bienvenido, esta es la hora del sistema</span>
             </template>
           </stats-card>
         </div>
 
-        <div class="col-xl-4 col-lg-6">
+        <div class="col-xl-5 col-lg-12">
           <stats-card title="Balance"
               type="gradient-green"
               :sub-title="balance | currency('$', 2, { spaceBetweenAmountAndSymbol: true, decimalSeparator: ',' })"
@@ -24,7 +24,8 @@
               class="mb-4 mb-xl-0">
 
             <template slot="footer">
-              <span class="text-nowrap">Este es tu dinero en la billetera</span>
+              <span class="text-nowrap" v-if="isClient">Este es tu dinero en la billetera</span>
+              <span class="text-nowrap" v-if="isShopkeeper">Este es tu cupo máximo de recargas</span>
             </template>
           </stats-card>
         </div>
@@ -48,18 +49,32 @@
   </div>
 </template>
 <script>
+import { ROLE_TYPES } from '@/constants'
+
 export default {
   beforeMount () {
     this.getBalance()
   },
+  created () {
+    setInterval(() => { this.now = new Date() }, 1000)
+  },
   data () {
     return {
+      ROLE_TYPES,
+      now: new Date(),
       balance: 0
     }
   },
   methods: {
     getBalance () {
-      this.$api.get('user/current-money').then((success) => {
+      let service = 'current-money'
+      if (this.isShopkeeper) {
+        service = 'shopkeeper/' + service
+      } else if (this.isClient) {
+        service = 'user/' + service
+      }
+
+      this.$api.get(service).then((success) => {
         this.balance = success.data.data.current
       }).catch((error) => {
         console.error('Error at Dashboard@getBalance', error)
@@ -67,11 +82,18 @@ export default {
       })
     }
   },
-  mounted () {
-  },
   computed: {
     userName () {
       return this.$store.getters.currentUser
+    },
+    isClient () {
+      return this.$store.getters.currentRole === this.ROLE_TYPES.CLIENT
+    },
+    isShopkeeper () {
+      return this.$store.getters.currentRole === this.ROLE_TYPES.SHOPKEEPER
+    },
+    today () {
+      return new Date()
     }
   }
 }

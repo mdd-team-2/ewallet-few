@@ -38,10 +38,6 @@
                 <small>{{errors.first('password')}}</small>
               </span>
             </div>
-
-            <base-checkbox class="custom-control-alternative">
-              <span class="text-muted">Recuérdame</span>
-            </base-checkbox>
             <div class="text-center">
               <base-button type="default" class="my-4" @click="login">Iniciar sesión</base-button>
             </div>

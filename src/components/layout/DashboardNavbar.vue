@@ -50,15 +50,6 @@
                         <div class=" dropdown-header noti-title">
                             <h6 class="text-overflow m-0">¡Hola!</h6>
                         </div>
-                        <router-link to="/profile" class="dropdown-item">
-                            <i class="ni ni-single-02"></i>
-                            <span>Mi perfil</span>
-                        </router-link>
-                        <router-link to="/profile" class="dropdown-item">
-                            <i class="ni ni-support-16"></i>
-                            <span>Ayuda</span>
-                        </router-link>
-                        <div class="dropdown-divider"></div>
                         <div class="dropdown-item" @click="modals.logoutModal = true">
                             <i class="ni ni-user-run"></i>
                             <span>Cerrar sesión</span>

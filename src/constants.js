@@ -18,3 +18,13 @@ export const ROLE_TYPES = {
   CLIENT: 1,
   SHOPKEEPER: 2
 }
+
+export const TRANSACTION_TYPES = {
+  TRANSFERENCE: 1,
+  PAYMENT: 2
+}
+
+export const TRANSACTION_TYPES_LABEL = {
+  TRANSFERENCE: 'Transferencia',
+  PAYMENT: 'Pago'
+}

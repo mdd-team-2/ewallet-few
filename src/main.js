@@ -11,6 +11,7 @@ import VeeValidate, { Validator } from 'vee-validate'
 import Vue2Filters from 'vue2-filters'
 import { ROOT_API_URL } from '@/constants'
 import axios from 'axios'
+import moment from 'vue-moment'
 
 Vue.config.productionTip = false
 
@@ -18,6 +19,7 @@ Vue.use(BootstrapVue)
 Vue.use(ComponentPlugin)
 Vue.use(VeeValidate)
 Vue.use(Vue2Filters)
+Vue.use(moment)
 Vue.use({
   install (Vue) {
     Vue.prototype.$api = axios.create({
